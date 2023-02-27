@@ -9,6 +9,100 @@ void intro();
 void swiop(int, int);
 int check(int);
 
+int main(){
+
+    intro();
+
+    time_t timer;
+    srand(time(&timer));
+    
+    for (int i = 0; i < 3; i++){                            
+        for (int j = 0; j < 3; j++){
+            tic[i][j] = 2;                                  // Assigning all values 2 for easier logical op
+        }
+    }
+    
+    int usc, inc = 0, ph[10], flag, cc, result;                // cc = computer choice; usc = user choice; ph = user safety; inc = index increment of ph[]
+
+    for (int i = 0; i < 10; i++){
+        ph[i] = 0;
+    }
+
+    while (true){
+
+        int n = 1;
+        input:
+            printf("Player, enter the location of X:  ");
+            scanf("%d", &usc);
+
+        for(int i = 0; i < 10; i++){                            // prevents user to type already in use placeholders
+            if (usc == ph[i]){
+                flag = 0;
+                break;
+            } else {
+                flag = 1;
+                continue;
+            }
+        }
+
+        if (flag == 0){
+            printf("Location already in use. Input another location.\n");
+            getchar();
+            goto input;
+        } else {
+            swiop(usc, n);
+        }
+
+        if (usc > 9){
+            goto input;
+        }
+
+        ph[inc] = usc;
+        inc ++;
+        result = check(n);
+
+        if (result == 0){
+            printf("O won!! Better luck next time, Player!\n");
+            break;
+        } else if (result == 1){
+            printf("X won!! Congratulations Player!!\n");
+            break;
+        } else if (result == 5){
+            printf("The match is drawn?! Well fought, Player!\n");
+            break;
+        }
+
+        regen:                                                                      // computer choice : generates a random number b/w 1 to 9: Then swiop fn. is used to
+            cc = (rand() % 9) + 1;                                                  // convert it into array address.
+        
+        for(int i = 0; i < 7; i++){                                                 // prevents computer to use user placeholders
+            if (cc == ph[i]){
+                goto regen;
+            } else {
+                continue;
+            }
+        }
+        n = 0;
+        swiop(cc, n);
+        printf("Computer: Location of O is %d\n", cc);
+        ph[inc] = cc;                                                               // to prevent user from using computer generated O values, I put the computer generated 
+        inc ++;                                                                     // numbers in the safety array
+        result = check(n);
+
+        if (result == 0){
+            printf("O won!! Better luck next time, Player!\n");
+            break;
+        } else if (result == 1){
+            printf("X won!! Congratulations Player!!\n");
+            break;
+        } else if (result == 5){
+            printf("The match is drawn?! Well fought, Player!\n");
+            break;
+        }
+    }
+    return 0;                                                                       // need to add graphics
+}
+
 void intro(){
 
     printf("\n\n------------TIC-TAC-TOE------------\n            --- --- ---\n\n");
@@ -60,6 +154,7 @@ void swiop(int c, int n){                               // for converting 1s, 2s
 
         default:
             printf("Take a look at the indexing above and type proper input.\n");
+            getchar();
             break;
     }
 }
@@ -132,91 +227,3 @@ int check(int n){
 // return 1 : X win
 // return 5 : Draw
 // return 6 : Normal flow
-
-int main(){
-
-    intro();
-
-    time_t timer;
-    srand(time(&timer));
-    
-    for (int i = 0; i < 3; i++){                            
-        for (int j = 0; j < 3; j++){
-            tic[i][j] = 2;                                  // Assigning all values 2 for easier logical op
-        }
-    }
-    
-    int usc, inc = 0, ph[7], flag, cc, result;                // cc = computer choice; usc = user choice; ph = user safety; inc = index increment of ph[]
-    while (true){
-
-        int n = 1;
-        input:
-            printf("Player, enter the location of X:  ");
-            scanf("%d", &usc);
-
-        for(int i = 0; i < 7; i++){                            // prevents user to type already in use placeholders
-            if (usc == ph[i]){
-                flag = 0;
-                break;
-            } else {
-                flag = 1;
-                continue;
-            }
-        }
-
-        if (flag == 0){
-            printf("Location already in use. Input another location.\n");
-            goto input;
-        } else {
-            swiop(usc, n);
-        }
-
-        if (usc > 9){
-            goto input;
-        }
-
-        ph[inc] = usc;
-        inc ++;
-        result = check(n);
-
-        if (result == 0){
-            printf("O won!! Better luck next time, Player!\n");
-            break;
-        } else if (result == 1){
-            printf("X won!! Congratulations Player!!\n");
-            break;
-        } else if (result == 5){
-            printf("The match is drawn?! Well fought, Player!\n");
-            break;
-        }
-
-        regen:                                                                      // computer choice : generates a random number b/w 1 to 9: Then swiop fn. is used to
-            cc = (rand() % 9) + 1;                                                  // convert it into array address.
-        
-        for(int i = 0; i < 7; i++){                                                 // prevents computer to use user placeholders
-            if (cc == ph[i]){
-                goto regen;
-            } else {
-                continue;
-            }
-        }
-        n = 0;
-        swiop(cc, n);
-        printf("Computer: Location of O is %d\n", cc);
-        ph[inc] = cc;                                                               // to prevent user from using computer generated O values, I put the computer generated 
-        inc ++;                                                                     // numbers in the safety array
-        result = check(n);
-
-        if (result == 0){
-            printf("O won!! Better luck next time, Player!\n");
-            break;
-        } else if (result == 1){
-            printf("X won!! Congratulations Player!!\n");
-            break;
-        } else if (result == 5){
-            printf("The match is drawn?! Well fought, Player!\n");
-            break;
-        }
-    }
-    return 0;                                                                       // need to add graphics
-}
