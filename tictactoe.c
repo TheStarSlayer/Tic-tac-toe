@@ -26,11 +26,12 @@ int main(){
         }
     }
     
-    for (int i = 0; i < 3; i++){                            
+    for (int i = 0; i < 9; i++){                            
         ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
     }
 
     int usc, inc = 0, ph[10], flag, cc, result;            // cc = computer choice; usc = user choice; ph = user safety; inc = index increment of ph[]
+    char l;
 
     for (int i = 0; i < 10; i++){
         ph[i] = 0;
@@ -75,22 +76,76 @@ int main(){
 
         if (result == 0){
             printmatr();
-            printf("O won!! Better luck next time, Player!\n");
+            printf("O won!! Better luck next time, Player!");
             getchar();
-            getchar();
-            break;
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
+
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
         } else if (result == 1){
             printmatr();
-            printf("X won!! Congratulations Player!!\n");
+            printf("X won!! Congratulations Player!!");
             getchar();
-            getchar();
-            break;
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
+
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
         } else if (result == 5){
             printmatr();
-            printf("The match is drawn?! Well fought, Player!\n");
+            printf("The match is drawn?! Well fought, Player!");
             getchar();
-            getchar();
-            break;
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
+
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
         }
 
         regen:                                         // computer choice : generates a random number b/w 1 to 9: Then swiop fn. is used to
@@ -112,24 +167,77 @@ int main(){
 
         if (result == 0){
             printmatr();
-            printf("O won!! Better luck next time, Player!\n");
+            printf("O won!! Better luck next time, Player!");
             getchar();
-            getchar();
-            break;
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
+
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
         } else if (result == 1){
             printmatr();
-            printf("X won!! Congratulations Player!!\n");
+            printf("X won!! Congratulations Player!!");
             getchar();
-            getchar();
-            break;
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
+
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
         } else if (result == 5){
             printmatr();
-            printf("The match is drawn?! Well fought, Player!\n");
+            printf("The match is drawn?! Well fought, Player!");
             getchar();
-            getchar();
-            break;
-        }
+            printf("Want to play again? Press Y.\n");
+            scanf("%c", &l);
+            if (l == 'y'){
+                for (int i = 0; i < 3; i++){                            
+                    for (int j = 0; j < 3; j++){
+                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+                    }
+                }
+    
+                for (int i = 0; i < 9; i++){                            
+                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+                }
 
+                for (int i = 0; i < 10; i++){
+                    ph[i] = 0;
+                }
+                continue;
+            } else {
+                break;
+            }
+        }
     }
     return 0;
 }
