@@ -43,6 +43,9 @@ int main(){
         input:
             printf("Player, enter the location of X:  ");
             scanf("%d", &usc);
+            getchar();
+            printf("Press to continue.");
+            getchar();
 
         for(int i = 0; i < 10; i++){                   // prevents user to type already in use placeholders
             if (usc == ph[i]){
@@ -56,7 +59,6 @@ int main(){
 
         if (flag == 0){
             printf("Location already in use. Input another location.\n");
-            getchar();
             goto input;
         } else {
             swiop(usc, n);
@@ -72,20 +74,20 @@ int main(){
         result = check(n);
 
         if (result == 0){
-            printf("O won!! Better luck next time, Player!\n");
             printmatr();
+            printf("O won!! Better luck next time, Player!\n");
             getchar();
             getchar();
             break;
         } else if (result == 1){
-            printf("X won!! Congratulations Player!!\n");
             printmatr();
+            printf("X won!! Congratulations Player!!\n");
             getchar();
             getchar();
             break;
         } else if (result == 5){
-            printf("The match is drawn?! Well fought, Player!\n");
             printmatr();
+            printf("The match is drawn?! Well fought, Player!\n");
             getchar();
             getchar();
             break;
@@ -109,24 +111,25 @@ int main(){
         result = check(n);
 
         if (result == 0){
-            printf("O won!! Better luck next time, Player!\n");
             printmatr();
+            printf("O won!! Better luck next time, Player!\n");
             getchar();
             getchar();
             break;
         } else if (result == 1){
-            printf("X won!! Congratulations Player!!\n");
             printmatr();
+            printf("X won!! Congratulations Player!!\n");
             getchar();
             getchar();
             break;
         } else if (result == 5){
-            printf("The match is drawn?! Well fought, Player!\n");
             printmatr();
+            printf("The match is drawn?! Well fought, Player!\n");
             getchar();
             getchar();
             break;
         }
+
     }
     return 0;
 }
@@ -137,7 +140,7 @@ void intro(){
 
     printf("The game is played as follows:\n\nPlayer takes control of X while the computer takes control of O. Player types in the position of the X\nwhen asked. Follow the below indexing system.\n");
 
-    puts("\n\n|\t1\t|\t2\t|\t3\t|\n-------------------------------------------------\n|\t4\t|\t5\t|\t6\t|\n-------------------------------------------------\n|\t7\t|\t8\t|\t9\t|\n\n\nClick to continue.");
+    puts("\n\n|\t1\t|\t2\t|\t3\t|\n-------------------------------------------------\n|\t4\t|\t5\t|\t6\t|\n-------------------------------------------------\n|\t7\t|\t8\t|\t9\t|\n\n\nPress to continue.");
     getchar();
 
 }
