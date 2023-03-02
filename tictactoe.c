@@ -3,15 +3,17 @@
 #include <stdbool.h>
 #include <time.h>
 
-int tic[3][3];                      // The main tic-tac-toe matrix(Logical)
+int tic[3][3];                      //  The main tic-tac-toe matrix(Logical)
 char ttt_m[10];                     //  Display tic-tac-toe matrix(Graphical)
-
+int ph[10];                         //  Safety array
+int inc = 0;                        //  inc == increment variable
 
 void intro();
 void swiop(int, int);
 int check(int);
 void printmatr();
 char xoro(int);
+void clearall();
 
 int main(){
 
@@ -30,7 +32,7 @@ int main(){
         ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
     }
 
-    int usc, inc = 0, ph[10], flag, cc, result;            // cc = computer choice; usc = user choice; ph = user safety; inc = index increment of ph[]
+    int usc, flag, cc, result;            // cc = computer choice; usc = user choice
     char l;
 
     for (int i = 0; i < 10; i++){
@@ -81,19 +83,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -105,19 +95,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -129,19 +107,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -172,19 +138,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -196,19 +150,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -220,19 +162,7 @@ int main(){
             printf("Want to play again? Press Y.\n");
             scanf("%c", &l);
             if (l == 'y'){
-                for (int i = 0; i < 3; i++){                            
-                    for (int j = 0; j < 3; j++){
-                        tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
-                    }
-                }
-    
-                for (int i = 0; i < 9; i++){                            
-                    ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
-                }
-
-                for (int i = 0; i < 10; i++){
-                    ph[i] = 0;
-                }
+                clearall();
                 continue;
             } else {
                 break;
@@ -396,4 +326,21 @@ char xoro(int n){           // Helps assigning X or O to the ttr_m matrix
     } else if (n == 0){
         return 'O';
     }
+}
+
+void clearall(){
+    for (int i = 0; i < 3; i++){                            
+        for (int j = 0; j < 3; j++){
+            tic[i][j] = 2;                         // Assigning all values 2 for easier logical op
+        }
+    }
+    
+    for (int i = 0; i < 9; i++){                            
+        ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+    }
+
+    for (int i = 0; i < 10; i++){
+        ph[i] = 0;
+    }
+    inc = 0;
 }
