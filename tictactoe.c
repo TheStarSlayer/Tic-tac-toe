@@ -29,7 +29,7 @@ int main(){
     }
     
     for (int i = 0; i < 9; i++){                            
-        ttt_m[i] = ' ';                           // Assigning all values ' ' for easier logical op
+        ttt_m[i] = ' ';                           // Assigning all values ' ' for easier graphical op
     }
 
     int usc, flag, cc, result;            // cc = computer choice; usc = user choice
@@ -49,7 +49,7 @@ int main(){
             getchar();
             printf("Press to continue.");
             getchar();
-
+        
         for(int i = 0; i < 10; i++){                   // prevents user to type already in use placeholders
             if (usc == ph[i]){
                 flag = 0;
@@ -61,7 +61,7 @@ int main(){
         }
 
         if (flag == 0){
-            printf("Location already in use. Input another location.\n");
+            printf("Location unavailable. Input another location.\n");
             goto input;
         } else {
             swiop(usc, n);
@@ -243,9 +243,9 @@ int check(int n){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
 
-            if (n == tic[i][j]){                  // if x or o exists in this locations, the if statements will be executed
+            if (n == tic[i][j]){             // if x or o exists in this locations, the if statements will be executed
 
-                if ((tic[i][0] == tic[i][1] && tic[i][2] == tic[i][1]) || (tic[0][j] == tic[1][j] && tic[2][j] == tic[1][j])){        // horizontal and vertical check
+                if ((tic[i][0] == tic[i][1] && tic[i][2] == tic[i][1]) || (tic[0][j] == tic[1][j] && tic[2][j] == tic[1][j])){   // horizontal and vertical check
 
                     if (n == 1){
                         return 1;
@@ -256,7 +256,7 @@ int check(int n){
                     }
                 }
 
-                if (i == 0 && j == 0){                                              // diagonal -- forward slash check
+                if (i == 0 && j == 0){                                            // diagonal -- forward slash check
                     if (tic[0][0] == tic[1][1] && tic [1][1] == tic [2][2]){
                         if (n == 1){
                             return 1;
@@ -316,7 +316,6 @@ void printmatr(){           // To print ttr_m matrix
         printf("\n|\t%c\t|\t%c\t|\t%c\t|\n-------------------------------------------------", ttt_m[i],ttt_m[i+1],ttt_m[i+2]);
         }
     }
-
     printf("\n\n");
 }
 
